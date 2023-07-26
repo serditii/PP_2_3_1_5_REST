@@ -4,7 +4,6 @@ import lombok.Data;
 import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.Entity;
@@ -20,7 +19,6 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 import java.util.Collection;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 
 @Entity
@@ -29,7 +27,7 @@ import java.util.stream.Collectors;
 @DynamicUpdate
 public class User implements UserDetails {
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.LAZY)
     private Set<Role> roles;
 
     @Id
@@ -57,6 +55,14 @@ public class User implements UserDetails {
 
     @Transient
     public String role;
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -91,11 +97,11 @@ public class User implements UserDetails {
         this.name = name;
     }
 
-    public String getLastName() {
+    public String getLastname() {
         return lastname;
     }
 
-    public void setLastName(String lastName) {
+    public void setLastname(String lastName) {
         this.lastname = lastName;
     }
 

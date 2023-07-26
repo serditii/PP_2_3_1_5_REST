@@ -1,5 +1,6 @@
 package ru.kata.spring.boot_security.demo.configs;
 
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -27,15 +28,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/").permitAll()
-//                .antMatchers("/admin/**").hasRole("ADMIN")
-//                .antMatchers("/user/**").hasAnyRole("ADMIN", "USER")
-//                .antMatchers("/users/**").hasRole("ADMIN")
-//                .antMatchers("/user1/**").hasRole("ADMIN")
-                .antMatchers("/admin/**").permitAll()
-                .antMatchers("/user/**").permitAll()
-                .antMatchers("/users/**").permitAll()
-                .antMatchers("/user1/**").permitAll()
-//                .anyRequest().authenticated()
+                .antMatchers("/admin/**").hasRole("ADMIN")
+                .antMatchers("/user/**").hasAnyRole("ADMIN", "USER")
+                .antMatchers("/users/**").hasRole("ADMIN")
+                .antMatchers("/user1/**").hasRole("ADMIN")
+                .anyRequest().authenticated()
                 .and()
                 .formLogin()
                 .loginPage("/login")
@@ -43,8 +40,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .and()
                 .logout().logoutSuccessUrl("/login")
-                .permitAll()
-        ;
+                .permitAll();
     }
 
     @Bean

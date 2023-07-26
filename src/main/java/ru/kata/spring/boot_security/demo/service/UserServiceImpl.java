@@ -9,7 +9,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.kata.spring.boot_security.demo.entity.User;
 import ru.kata.spring.boot_security.demo.repositories.UsersRepository;
+import ru.kata.spring.boot_security.demo.util.UserNotFoundExeption;
 
+import javax.persistence.EntityManager;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,11 +20,13 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
     private final UsersRepository usersRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
+    private EntityManager entityManager;
 
     @Lazy
-    public UserServiceImpl(UsersRepository usersRepository, BCryptPasswordEncoder bCryptPasswordEncoder) {
+    public UserServiceImpl(UsersRepository usersRepository, BCryptPasswordEncoder bCryptPasswordEncoder, EntityManager entityManager) {
         this.usersRepository = usersRepository;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+        this.entityManager = entityManager;
     }
 
     @Transactional
@@ -45,7 +49,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     @Override
     public User showUser(long id) {
         Optional<User> userFromDb = usersRepository.findById(id);
-        return userFromDb.orElse(new User());
+        return userFromDb.orElseThrow(UserNotFoundExeption::new);
     }
 
     @Transactional
