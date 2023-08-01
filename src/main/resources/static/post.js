@@ -9,7 +9,7 @@ async function createUser(userName, userLastname
         role: userRole
     });
 
-    const response = await fetch("http://localhost:8080/users", {
+    const response = await fetch("http://localhost:8080/api/admin/users", {
         method: "POST",
         headers: {"Accept": "application/json", "Content-Type": "application/json"},
         body: userJSON

@@ -9,7 +9,7 @@ async function editUser(userId, userName, userLastname, userAge, userEmail, user
         password: userPassword,
         role: userRole
     });
-    const response = await fetch("http://localhost:8080/update", {
+    const response = await fetch("http://localhost:8080/api/admin/users", {
         method: "PATCH",
         headers: {"Accept": "application/json", "Content-Type": "application/json"},
         body: userJSON

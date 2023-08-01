@@ -1,5 +1,5 @@
 async function getAdmin() {
-    const response = await fetch("http://localhost:8080/user/show", {
+    const response = await fetch("http://localhost:8080/api/admin/user", {
         method: "GET",
         headers: {"Accept": "application/json"}
     });
