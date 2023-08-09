@@ -1,7 +1,6 @@
 async function getAdmin() {
     const response = await fetch("http://localhost:8080/api/admin/user", {
-        method: "GET",
-        headers: {"Accept": "application/json"}
+        method: "GET", headers: {"Accept": "application/json"}
     });
 
     if (response.ok === true) {
@@ -23,7 +22,7 @@ async function getAdmin() {
         adminLink.append("Admin");
         adminLink.addEventListener("click", e => {
             e.preventDefault();
-            getUser();
+            getUser1();
         });
         link3.replaceChildren(adminLink);
 
@@ -72,7 +71,6 @@ function newUser() {
     usersTableLink1.append("Users table");
     usersTableLink1.addEventListener("click", e => {
         e.preventDefault();
-        getAdmin();
         getUsers();
     });
     linkUsersTable1.replaceChildren(usersTableLink1);
@@ -109,8 +107,7 @@ function newUser() {
     labelName.textContent = "First name";
 
     const inputName = document.createElement("input");
-    inputName.setAttribute("class", "form-control w-25 p-1 " +
-        "text-dark bg-opacity-25 mx-auto");
+    inputName.setAttribute("class", "form-control w-25 p-1 " + "text-dark bg-opacity-25 mx-auto");
     inputName.setAttribute("type", "text");
     inputName.setAttribute("id", "name");
     inputName.setAttribute("placeholder", "First name");
@@ -128,8 +125,7 @@ function newUser() {
     labelLastName.textContent = "Last name";
 
     const inputLastName = document.createElement("input");
-    inputLastName.setAttribute("class", "form-control w-25 p-1 " +
-        "text-dark bg-opacity-25 mx-auto");
+    inputLastName.setAttribute("class", "form-control w-25 p-1 " + "text-dark bg-opacity-25 mx-auto");
     inputLastName.setAttribute("type", "text");
     inputLastName.setAttribute("id", "lastname");
     inputLastName.setAttribute("placeholder", "Last name");
@@ -147,8 +143,7 @@ function newUser() {
     labelAge.textContent = "Age";
 
     const inputAge = document.createElement("input");
-    inputAge.setAttribute("class", "form-control w-25 p-1 " +
-        "text-dark bg-opacity-25 mx-auto");
+    inputAge.setAttribute("class", "form-control w-25 p-1 " + "text-dark bg-opacity-25 mx-auto");
     inputAge.setAttribute("type", "number");
     inputAge.setAttribute("id", "age");
     inputAge.setAttribute("placeholder", "Age");
@@ -166,8 +161,7 @@ function newUser() {
     labelEmail.textContent = "Email";
 
     const inputEmail = document.createElement("input");
-    inputEmail.setAttribute("class", "form-control w-25 p-1 " +
-        "text-dark bg-opacity-25 mx-auto");
+    inputEmail.setAttribute("class", "form-control w-25 p-1 " + "text-dark bg-opacity-25 mx-auto");
     inputEmail.setAttribute("type", "text");
     inputEmail.setAttribute("id", "email");
     inputEmail.setAttribute("placeholder", "Email");
@@ -185,8 +179,7 @@ function newUser() {
     labelPassword.textContent = "Password";
 
     const inputPassword = document.createElement("input");
-    inputPassword.setAttribute("class", "form-control w-25 p-1 " +
-        "text-dark bg-opacity-25 mx-auto");
+    inputPassword.setAttribute("class", "form-control w-25 p-1 " + "text-dark bg-opacity-25 mx-auto");
     inputPassword.setAttribute("type", "password");
     inputPassword.setAttribute("id", "password");
     inputPassword.setAttribute("placeholder", "Password");
@@ -204,8 +197,7 @@ function newUser() {
     labelRole.textContent = "Role";
 
     const selectRole = document.createElement("select");
-    selectRole.setAttribute("class", "form-control w-25  p-1 " +
-        "text-dark bg-opacity-25 mx-auto");
+    selectRole.setAttribute("class", "form-control w-25  p-1 " + "text-dark bg-opacity-25 mx-auto");
     selectRole.setAttribute("size", "2");
     selectRole.setAttribute("id", "role");
     selectRole.setAttribute("aria-label", "а");

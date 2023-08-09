@@ -16,6 +16,6 @@ async function createUser(userName, userLastname
     });
     if (response.ok === true) {
         await getUsers();
-        await getAdmin();
+        // await getAdmin();
     }
 }

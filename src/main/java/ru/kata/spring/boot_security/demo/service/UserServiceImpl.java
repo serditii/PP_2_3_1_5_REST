@@ -74,7 +74,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     public void deleteUser(long id) {
         if (usersRepository.findById(id).isPresent()) {
             usersRepository.deleteById(id);
-        }
+        }else throw new UserNotFoundExeption();
     }
 
     @Transactional(readOnly = true)

@@ -6,6 +6,26 @@ async function getUsers() {
     if (response.ok === true) {
         const users = await response.json();
 
+        //Кнопка Users table
+        let linkUsersTable = document.getElementById('Users table');
+        const usersTableLink = document.createElement("a");
+        usersTableLink.setAttribute("href", "#");
+        usersTableLink.setAttribute("class", "nav-link px-2 text-dark border");
+        usersTableLink.append("Users table");
+        linkUsersTable.replaceChildren(usersTableLink);
+
+        //Кнопка New user
+        let linkNewUser = document.getElementById('New user');
+        const newUserLink = document.createElement("a");
+        newUserLink.setAttribute("href", "#");
+        newUserLink.setAttribute("class", "nav-link");
+        newUserLink.append("New User");
+        newUserLink.addEventListener("click", e => {
+            e.preventDefault();
+            newUser();
+        });
+        linkNewUser.replaceChildren(newUserLink);
+
         const table = document.getElementById("table");
         const div1 = document.createElement("div");
         div1.setAttribute("class", "table-responsive small  ms-3 border");
@@ -109,20 +129,6 @@ function row(user) {
     linksTd1.append(editLink);
     tr.appendChild(linksTd1);
 
-    // кнопка Edit в модальном окне
-    document.forms["editForm"].addEventListener("submit", e => {
-        e.preventDefault();
-        const form = document.forms["editForm"];
-        const id = form.elements["id"].value;
-        const name = form.elements["name"].value;
-        const lastname = form.elements["lastname"].value;
-        const age = form.elements["age"].value;
-        const email = form.elements["email"].value;
-        const password = form.elements["password"].value;
-        const role = form.elements["role"].value;
-        editUser(id, name, lastname, age, email, password, role);
-    });
-
 // кнопка Delete
     const linksTd2 = document.createElement("td");
     const removeLink = document.createElement("button");
@@ -139,12 +145,5 @@ function row(user) {
     linksTd2.append(removeLink);
     tr.appendChild(linksTd2);
 
-    // кнопка Delete в модальном окне
-    document.forms["deleteForm"].addEventListener("submit", e => {
-        e.preventDefault();
-        const form = document.forms["editForm"];
-        const id = form.elements["id"].value;
-        deleteUser(id);
-    });
     return tr;
 }

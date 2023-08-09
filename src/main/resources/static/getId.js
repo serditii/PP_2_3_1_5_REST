@@ -18,6 +18,5 @@ async function getUser(id) {
         form1.elements["lastname"].value = user.lastname;
         form1.elements["age"].value = user.age;
         form1.elements["email"].value = user.email;
-        form1.elements["role"].value = user.role;
     }
 }

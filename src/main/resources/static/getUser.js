@@ -1,4 +1,4 @@
-async function getUser() {
+async function getUser1() {
     const response = await fetch("http://localhost:8080/api/admin/user", {
         method: "GET",
         headers: {"Accept": "application/json"}
